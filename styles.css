@@ -1,0 +1,80 @@
+body {
+    background-color: #1d1d1d;
+    color: white;
+}
+
+p {
+    font-size: 30px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.moon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    flex-direction: column;
+}
+
+.moon img {
+    max-width: 40%;
+    height: auto;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+input {
+    padding: 8px;
+    font-size: 20px;
+    font-family:'Courier New', Courier, monospace;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    text-align: center;
+    background-color: #222;
+    color: white;
+    width: 50%;
+}
+
+input::placeholder {
+    color: #888;
+}
+
+.wish-display {
+    font-size: 40px;
+    font-style: italic;
+    font-weight: bolder;
+    /* color: #0044ff; */
+    color: #ffee00;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+}
+
+.star {
+    position: absolute;
+    font-size: 12px;
+    color: white;
+    pointer-events: none;
+    animation: fadeOut 2.5s ease-out;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+}
