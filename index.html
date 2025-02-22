@@ -22,65 +22,56 @@
     <script>
       function onEnter(event) {
         if (event.key === 'Enter') {
-          // Check if Enter key is pressed
           let wishInput = document.getElementById('wishInput').value.trim();
           let wishDisplay = document.getElementById('wishDisplay');
 
           if (wishInput) {
-            wishDisplay.innerHTML = ''; // Clear previous wish
+            wishDisplay.innerHTML = '';
 
-            // Convert wish into individual span elements for each letter
             for (let letter of wishInput) {
               let span = document.createElement('span');
               span.textContent = letter;
-              span.style.opacity = 1; // Ensure it's visible initially
+              span.style.opacity = 1;
               wishDisplay.appendChild(span);
             }
 
-            // Randomly fade out letters one by one
             let spans = wishDisplay.querySelectorAll('span');
             spans.forEach((span, index) => {
-              let delay = Math.random() * 3000 + 1000; // Random fade between 1-4 seconds
+              let delay = Math.random() * 3000 + 1000;
               setTimeout(() => {
                 span.style.transition = 'opacity 1s ease-out';
                 span.style.opacity = 0;
               }, delay);
             });
 
-            // Clear the input field after submission
             document.getElementById('wishInput').value = '';
 
-            // Remove the text after all letters fade out
             setTimeout(() => {
               wishDisplay.innerHTML = '';
-            }, 5000); // Ensures text disappears after fade
+            }, 5000);
           }
         }
       }
 
       document.addEventListener('mousemove', (e) => {
-        // Reduce the frequency of stars by adding a random condition
-        if (Math.random() > 0.5) return; // 50% chance of creating a star
+        if (Math.random() > 0.5) return;
 
         const star = document.createElement('div');
         star.classList.add('star');
         star.innerHTML = '✮';
         document.body.appendChild(star);
 
-        // Position the star at cursor with a slight offset
         star.style.left = `${e.clientX + (Math.random() * 20 - 10)}px`; // Random offset for spacing
         star.style.top = `${e.clientY + (Math.random() * 20 - 10)}px`;
 
-        // Make the star move slightly and fade out more slowly
         setTimeout(() => {
           star.style.opacity = '0';
-          star.style.transform = 'scale(2)'; // Makes it "drift" away
-        }, 1500); // Increased fade-out duration
+          star.style.transform = 'scale(2)';
+        }, 1500);
 
-        // Remove the star after animation completes
         setTimeout(() => {
           star.remove();
-        }, 2500); // Keep the star longer before removal
+        }, 2500);
       });
     </script>
   </body>
